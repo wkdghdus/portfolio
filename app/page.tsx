@@ -7,23 +7,23 @@ export default async function HomePage() {
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-16">
       <section className="mb-12">
-        <h1 className="text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
+        <h1 className="font-display text-4xl font-black uppercase tracking-[0.15em] text-[--foreground]">
           Projects
         </h1>
-        <p className="mt-3 max-w-2xl text-base text-neutral-600 dark:text-neutral-300">
+        <p className="mt-3 max-w-2xl text-base text-[--midground]">
           A file-system driven portfolio. Each entry below is rendered from a
           markdown file in the projects directory.
         </p>
       </section>
 
       {projects.length === 0 ? (
-        <p className="text-neutral-500 dark:text-neutral-400">
+        <p className="text-[--muted]">
           No projects yet. Add a folder under{' '}
-          <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">
+          <code className="rounded bg-[--forest-surface] px-1 py-0.5 text-[--accent]">
             projects/
           </code>{' '}
           with a{' '}
-          <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">
+          <code className="rounded bg-[--forest-surface] px-1 py-0.5 text-[--accent]">
             project-description.md
           </code>{' '}
           file.
