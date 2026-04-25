@@ -2,26 +2,63 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background:     #041c1c;
+  --surface:        color-mix(in srgb, #ffe6cb 4%, #041c1c);
+  --midground:      #ffe6cb;
+  --foreground:     #fcfdfc;
+  --accent:         #ffbd38;
+  --accent-glow:    rgba(255, 189, 56, 0.35);
+  --border:         color-mix(in srgb, #ffe6cb 15%, transparent);
+  --border-subtle:  color-mix(in srgb, #ffe6cb 8%, transparent);
+  --muted:          color-mix(in srgb, #ffe6cb 50%, transparent);
+  --forest-surface: #0e1f0e;
+  --forest-border:  #1f3320;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans:    var(--font-geist-sans);
+  --font-mono:    var(--font-geist-mono);
+  --font-display: var(--font-big-shoulders);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: overlay;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--background);
+  color: var(--midground);
   font-family: Arial, Helvetica, sans-serif;
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, #ffe6cb 12%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+}
+
+.prose {
+  --tw-prose-body:       var(--midground);
+  --tw-prose-headings:   var(--foreground);
+  --tw-prose-links:      var(--accent);
+  --tw-prose-bold:       var(--foreground);
+  --tw-prose-code:       var(--accent);
+  --tw-prose-hr:         var(--border);
+  --tw-prose-quotes:     var(--midground);
+  --tw-prose-captions:   var(--muted);
+  --tw-prose-counters:   var(--muted);
+  --tw-prose-bullets:    var(--accent);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border-subtle);
+  --tw-prose-pre-bg:     var(--surface);
+  --tw-prose-pre-code:   var(--midground);
+  --tw-prose-kbd:        var(--foreground);
+  --tw-prose-kbd-shadows: 0 0 0 1px var(--border);
 }
