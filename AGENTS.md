@@ -79,6 +79,38 @@ Anything below the closing `---` is the markdown body, rendered as HTML inside a
 - **Styling**: Tailwind only. No inline `style={...}` props, no separate CSS modules, no styled-components.
 - **Imports**: Use the `@/*` alias for absolute imports from the repo root.
 
+## Design system
+
+Before writing any UI or styling code, read the relevant document in `docs/design-reference/`. Start with [`NORTH_STAR.md`](docs/design-reference/NORTH_STAR.md) — five hard rules that define the Nous aesthetic. Any violation produces output that is not Nous.
+
+**The five rules in brief:**
+1. Background is always `#041c1c` — never neutral gray, never pure black.
+2. Body text is `#ffe6cb` (warm cream); pure white only for max-contrast headings.
+3. Gold (`#ffbd38`) is the only accent — no blue, purple, or green interactive states.
+4. Every heading, label, badge, button, and nav item is uppercase with `letter-spacing ≥ 0.1em`.
+5. Every surface has a noise grain overlay; feature surfaces also get the dot-grid.
+
+| When you change… | Read first |
+|---|---|
+| Background, surface, or text color | [`NORTH_STAR.md`](docs/design-reference/NORTH_STAR.md) + [`tokens/colors.md`](docs/design-reference/tokens/colors.md) |
+| CSS custom properties / design tokens | [`tokens/css-variables.md`](docs/design-reference/tokens/css-variables.md) |
+| Font family, size, weight, or letter-spacing | [`tokens/typography.md`](docs/design-reference/tokens/typography.md) |
+| Spacing, gap, padding, or icon sizing | [`tokens/spacing.md`](docs/design-reference/tokens/spacing.md) |
+| Noise grain or texture overlay | [`effects/noise-grain.md`](docs/design-reference/effects/noise-grain.md) |
+| Dot-grid background | [`effects/dot-grid.md`](docs/design-reference/effects/dot-grid.md) |
+| Glow or box-shadow accent | [`effects/glow-shadow.md`](docs/design-reference/effects/glow-shadow.md) |
+| Button bevel or 3-D press feel | [`effects/bevel-button.md`](docs/design-reference/effects/bevel-button.md) |
+| Card shadow or depth | [`effects/shadow-card.md`](docs/design-reference/effects/shadow-card.md) |
+| Badge or tag | [`components/badge.md`](docs/design-reference/components/badge.md) · [`components/tag.md`](docs/design-reference/components/tag.md) |
+| Button variant | [`components/button.md`](docs/design-reference/components/button.md) |
+| Card layout or CSS-var hooks | [`components/card.md`](docs/design-reference/components/card.md) |
+| Project grid columns or breakpoints | [`layout/card-grid.md`](docs/design-reference/layout/card-grid.md) |
+| Navigation font, spacing, or reveal | [`layout/navigation.md`](docs/design-reference/layout/navigation.md) |
+| Hover opacity or glow interaction | [`interactions/hover-opacity-reveal.md`](docs/design-reference/interactions/hover-opacity-reveal.md) · [`interactions/hover-glow.md`](docs/design-reference/interactions/hover-glow.md) |
+| Active / press state | [`interactions/active-press.md`](docs/design-reference/interactions/active-press.md) |
+
+Full index: [`docs/design-reference/README.md`](docs/design-reference/README.md).
+
 ## What NOT to touch
 
 - The exported function signatures in `lib/projects.ts` (`getProjectSlugs`, `getProjectBySlug`, `getAllProjects`) and the types in `types/project.ts`. The home page, the dynamic route, and any future tooling depend on this contract. Add new helpers if you need them; don't change existing ones.
