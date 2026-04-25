@@ -12,14 +12,14 @@ export default function ProjectHeader({
   description,
 }: ProjectHeaderProps) {
   return (
-    <header className="mb-10 border-b border-neutral-200 pb-8 dark:border-neutral-800">
-      <h1 className="text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
+    <header className="mb-10 border-b border-[--border] pb-8">
+      <h1 className="font-display text-4xl font-black uppercase tracking-[0.15em] text-[--foreground]">
         {title}
       </h1>
-      <time className="mt-3 block text-sm text-neutral-500 dark:text-neutral-400">
+      <time className="mt-3 block text-sm text-[--muted]">
         {date}
       </time>
-      <p className="mt-4 text-lg text-neutral-700 dark:text-neutral-300">
+      <p className="mt-4 text-lg text-[--midground]">
         {description}
       </p>
       {tags.length > 0 && (
@@ -27,7 +27,7 @@ export default function ProjectHeader({
           {tags.map((tag) => (
             <li
               key={tag}
-              className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+              className="rounded-full border border-[--forest-border] bg-[--forest-surface] px-3 py-1 text-xs font-medium text-[--accent]"
             >
               {tag}
             </li>
