@@ -1,0 +1,137 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1777093930544,
+  "projectRoot": "/Users/wkdghdus/Desktop/coding/portfolio",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "next",
+        "version": "16.2.4",
+        "category": "fullstack"
+      },
+      {
+        "name": "react",
+        "version": "19.2.4",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "19.2.4",
+        "category": "frontend"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": "npm run dev",
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start"
+    }
+  },
+  "conventions": {
+    "namingStyle": "camelCase",
+    "importStyle": "ES modules",
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "app",
+      "components",
+      "lib",
+      "public"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "app": {
+      "path": "app",
+      "purpose": "Application code",
+      "fileCount": 4,
+      "lastAccessed": 1777093930498,
+      "keyFiles": [
+        "favicon.ico",
+        "globals.css",
+        "layout.tsx",
+        "page.tsx"
+      ]
+    },
+    "components": {
+      "path": "components",
+      "purpose": "UI components",
+      "fileCount": 2,
+      "lastAccessed": 1777093930501,
+      "keyFiles": [
+        "ProjectCard.tsx",
+        "ProjectHeader.tsx"
+      ]
+    },
+    "lib": {
+      "path": "lib",
+      "purpose": "Library code",
+      "fileCount": 1,
+      "lastAccessed": 1777093930502,
+      "keyFiles": [
+        "projects.ts"
+      ]
+    },
+    "projects": {
+      "path": "projects",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1777093930520,
+      "keyFiles": []
+    },
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 5,
+      "lastAccessed": 1777093930523,
+      "keyFiles": [
+        "file.svg",
+        "globe.svg",
+        "next.svg",
+        "vercel.svg",
+        "window.svg"
+      ]
+    },
+    "types": {
+      "path": "types",
+      "purpose": "Type definitions",
+      "fileCount": 1,
+      "lastAccessed": 1777093930524,
+      "keyFiles": [
+        "project.ts"
+      ]
+    }
+  },
+  "hotPaths": [],
+  "userDirectives": []
+}
