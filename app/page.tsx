@@ -7,13 +7,9 @@ export default async function HomePage() {
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-16">
       <section className="mb-12">
-        <h1 className="font-display text-4xl font-black uppercase tracking-[0.15em] text-[--foreground]">
+        <h1 className="font-display text-4xl uppercase tracking-[0.15em] text-[--foreground]">
           Projects
         </h1>
-        <p className="mt-3 max-w-2xl text-base text-[--midground]">
-          A file-system driven portfolio. Each entry below is rendered from a
-          markdown file in the projects directory.
-        </p>
       </section>
 
       {projects.length === 0 ? (

@@ -13,7 +13,7 @@ export default function ProjectHeader({
 }: ProjectHeaderProps) {
   return (
     <header className="mb-10 border-b border-[--border] pb-8">
-      <h1 className="font-display text-4xl font-black uppercase tracking-[0.15em] text-[--foreground]">
+      <h1 className="font-display text-4xl uppercase tracking-[0.15em] text-[--foreground]">
         {title}
       </h1>
       <time className="mt-3 block text-sm text-[--muted]">
@@ -27,7 +27,7 @@ export default function ProjectHeader({
           {tags.map((tag) => (
             <li
               key={tag}
-              className="rounded-full border border-[--forest-border] bg-[--forest-surface] px-3 py-1 text-xs font-medium text-[--accent]"
+              className="bg-[--forest-surface] border border-[--forest-border] text-[--accent] text-xs font-mono uppercase tracking-[0.08em] px-2 py-0.5"
             >
               {tag}
             </li>
