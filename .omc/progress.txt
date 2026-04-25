@@ -1,0 +1,24 @@
+RALPH SESSION: Nous Design Reference Library
+Date: 2026-04-25
+Task: Build docs/design-reference/ from nousnet + hermes-agent source
+
+PLAN FILE: .omc/plans/nous-design-reference-library.md
+
+SOURCE DATA CAPTURED (2026-04-25):
+- nousnet colors.ts: slate(11), forest(7), gold(6), lime(6), success(6), error(6) palettes
+- nousnet themes.ts: dark=forest[700] bg + slate[0] fg; SVG pattern via --bg-svg CSS var
+- nousnet fonts.ts: Soufflet Vert (display), Geist Mono (body/headline/button), Geist (aux)
+- hermes-agent index.css: --background #041c1c, --midground #ffe6cb, --warm-glow rgba(255,189,56,0.35)
+- hermes-agent App.tsx: font-mondwest nav, opacity-60 hover:opacity-100 reveal, h-dvh layout
+- hermes-agent badge.tsx: font-compressed 0.65rem tracking-[0.15em] uppercase, 6 variants
+- hermes-agent button.tsx: font-mondwest text-xs tracking-[0.1em] uppercase, 6 variants
+- hermes-agent card.tsx: CSS-var hooks (--component-card-*), font-expanded card titles
+- nousnet gl/: frag.glsl (noise->color->dither), dither.glsl (8x8 Bayer), noise.glsl (simplex 4D), regl.ts
+- nousnet Button.tsx: bevel via inset box-shadow, 4 variants, gold primary
+- nousnet OutlineBox.tsx: fieldset+legend floating label, forest[500] border
+- nousnet ShadowCard.tsx: translateZ(-10px) layered shadow
+- nousnet StatusChip.tsx: 5 status colors + 2s pulse keyframe
+- nousnet ProgressBar.tsx: chunked repeating-linear-gradient, forest[500] active
+
+ITERATIONS:
+- Iteration 1: PRD written, beginning parallel file creation for all stories

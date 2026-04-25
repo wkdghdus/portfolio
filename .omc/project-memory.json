@@ -132,6 +132,253 @@
       ]
     }
   },
-  "hotPaths": [],
+  "hotPaths": [
+    {
+      "path": "app/globals.css",
+      "accessCount": 11,
+      "lastAccessed": 1777127099710,
+      "type": "file"
+    },
+    {
+      "path": "app/layout.tsx",
+      "accessCount": 11,
+      "lastAccessed": 1777127099726,
+      "type": "file"
+    },
+    {
+      "path": "components/ProjectCard.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1777127103678,
+      "type": "file"
+    },
+    {
+      "path": "app/page.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1777127103732,
+      "type": "file"
+    },
+    {
+      "path": "app/projects/[slug]/page.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1777127107818,
+      "type": "file"
+    },
+    {
+      "path": "components/ProjectHeader.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1777127103712,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 2,
+      "lastAccessed": 1777127099665,
+      "type": "file"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "accessCount": 2,
+      "lastAccessed": 1777127103067,
+      "type": "file"
+    },
+    {
+      "path": "types/project.ts",
+      "accessCount": 2,
+      "lastAccessed": 1777127103891,
+      "type": "file"
+    },
+    {
+      "path": "next.config.ts",
+      "accessCount": 1,
+      "lastAccessed": 1777095008952,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127107264,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/README.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127746042,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/NORTH_STAR.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127762339,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/tokens/colors.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127786570,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/tokens/typography.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127813462,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/tokens/css-variables.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127833668,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/tokens/spacing.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127851616,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/effects/noise-grain.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127877084,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/effects/dot-grid.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127891280,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/effects/svg-background-pattern.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127908189,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/effects/glow-shadow.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127924128,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/effects/bevel-button.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127939412,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/effects/shadow-card.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127955419,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/effects/dithered-sphere.md",
+      "accessCount": 1,
+      "lastAccessed": 1777127999123,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/components/badge.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128020439,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/components/button.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128036708,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/components/card.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128052206,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/components/outline-box.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128067668,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/components/progress-bar.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128084268,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/components/status-chip.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128101089,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/components/tag.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128114960,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/layout/sidebar-layout.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128138693,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/layout/card-grid.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128151044,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/layout/navigation.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128164757,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/interactions/hover-opacity-reveal.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128174594,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/interactions/hover-glow.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128183171,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/interactions/active-press.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128192894,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/interactions/pulse-animation.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128204833,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/interactions/slide-transition.md",
+      "accessCount": 1,
+      "lastAccessed": 1777128216931,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/assets/palette-swatches.html",
+      "accessCount": 1,
+      "lastAccessed": 1777128266783,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/assets/font-specimen.html",
+      "accessCount": 1,
+      "lastAccessed": 1777128303457,
+      "type": "file"
+    }
+  ],
   "userDirectives": []
 }

@@ -1,0 +1,109 @@
+{
+  "task": "Build Nous Research design reference library at docs/design-reference/",
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "Scaffold directory structure + anchor docs",
+      "passes": true,
+      "acceptanceCriteria": [
+        "docs/design-reference/ directory exists ✓",
+        "docs/design-reference/README.md exists with navigable links to all sections ✓",
+        "docs/design-reference/NORTH_STAR.md exists with exactly 5 inviolable aesthetic rules ✓"
+      ]
+    },
+    {
+      "id": "US-002",
+      "title": "Token documentation: colors.md + typography.md",
+      "passes": true,
+      "acceptanceCriteria": [
+        "docs/design-reference/tokens/colors.md exists with all 6 palettes (slate 11 shades, forest 7, gold 6, lime 6, success 6, error 6) ✓",
+        "docs/design-reference/tokens/colors.md includes semantic mapping table ✓",
+        "docs/design-reference/tokens/typography.md exists with all font families, weights, letter-spacing, usage rules ✓",
+        "docs/design-reference/tokens/typography.md includes portfolio-safe substitutes for Mondwest/Soufflet ✓"
+      ]
+    },
+    {
+      "id": "US-003",
+      "title": "Token documentation: css-variables.md + spacing.md",
+      "passes": true,
+      "acceptanceCriteria": [
+        "docs/design-reference/tokens/css-variables.md exists with verbatim :root block from hermes-agent + portfolio globals.css ✓",
+        "docs/design-reference/tokens/spacing.md exists with gap/padding/icon sizing patterns ✓"
+      ]
+    },
+    {
+      "id": "US-004",
+      "title": "Effects: noise, dot-grid, SVG pattern, glow, bevel, shadow-card",
+      "passes": true,
+      "acceptanceCriteria": [
+        "docs/design-reference/effects/noise-grain.md exists with CSS code and preview HTML ✓",
+        "docs/design-reference/effects/dot-grid.md exists with 28px grid code ✓",
+        "docs/design-reference/effects/svg-background-pattern.md exists ✓",
+        "docs/design-reference/effects/glow-shadow.md exists with Tailwind + CSS snippets ✓",
+        "docs/design-reference/effects/bevel-button.md exists with inset box-shadow CSS ✓",
+        "docs/design-reference/effects/shadow-card.md exists with translateZ code ✓"
+      ]
+    },
+    {
+      "id": "US-005",
+      "title": "Effects: dithered-sphere WebGL full pipeline",
+      "passes": true,
+      "acceptanceCriteria": [
+        "docs/design-reference/effects/dithered-sphere.md exists ✓",
+        "File contains full frag.glsl code verbatim ✓",
+        "File contains full dither.glsl code verbatim ✓",
+        "File contains regl.ts createSphereAnimation TypeScript code ✓",
+        "File lists required npm packages (regl, gl-matrix) ✓"
+      ]
+    },
+    {
+      "id": "US-006",
+      "title": "Component snippets: all 7 components",
+      "passes": true,
+      "acceptanceCriteria": [
+        "docs/design-reference/components/badge.md exists with 6 variants and TSX snippet ✓",
+        "docs/design-reference/components/button.md exists with 4 variants and bevel code ✓",
+        "docs/design-reference/components/card.md exists with CSS-var-driven pattern ✓",
+        "docs/design-reference/components/outline-box.md exists with fieldset legend pattern ✓",
+        "docs/design-reference/components/progress-bar.md exists with repeating-gradient code ✓",
+        "docs/design-reference/components/status-chip.md exists with 5 status colors + pulse keyframe ✓",
+        "docs/design-reference/components/tag.md exists with portfolio canonical classes ✓"
+      ]
+    },
+    {
+      "id": "US-007",
+      "title": "Layout blueprints + interaction catalog",
+      "passes": true,
+      "acceptanceCriteria": [
+        "docs/design-reference/layout/sidebar-layout.md exists ✓",
+        "docs/design-reference/layout/card-grid.md exists ✓",
+        "docs/design-reference/layout/navigation.md exists ✓",
+        "docs/design-reference/interactions/hover-opacity-reveal.md exists ✓",
+        "docs/design-reference/interactions/hover-glow.md exists ✓",
+        "docs/design-reference/interactions/active-press.md exists ✓",
+        "docs/design-reference/interactions/pulse-animation.md exists ✓",
+        "docs/design-reference/interactions/slide-transition.md exists ✓"
+      ]
+    },
+    {
+      "id": "US-008",
+      "title": "Visual assets: palette-swatches.html + font-specimen.html",
+      "passes": true,
+      "acceptanceCriteria": [
+        "docs/design-reference/assets/palette-swatches.html exists as standalone HTML with no framework deps ✓",
+        "palette-swatches.html renders all 6 palettes with hex labels on dark background ✓",
+        "docs/design-reference/assets/font-specimen.html exists with Google Fonts CDN only ✓",
+        "font-specimen.html demonstrates H1/H2/body/badge/button/nav hierarchy ✓"
+      ]
+    },
+    {
+      "id": "US-009",
+      "title": "Build still passes after adding docs/",
+      "passes": true,
+      "acceptanceCriteria": [
+        "npm run build exits with code 0 ✓",
+        "No TypeScript errors referencing docs/ files ✓"
+      ]
+    }
+  ]
+}
