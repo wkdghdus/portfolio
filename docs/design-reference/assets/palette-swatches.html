@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nous Research — Palette Swatches</title>
+<style>
+  :root {
+    --bg: #041c1c;
+    --fg: #ffe6cb;
+    --fg-muted: rgba(255, 230, 203, 0.5);
+    --fg-soft: rgba(255, 230, 203, 0.35);
+    --border: rgba(255, 230, 203, 0.1);
+    --card-border: rgba(255, 230, 203, 0.08);
+  }
+
+  body[data-theme="light"] {
+    --bg: #ecf0eb;
+    --fg: #2a462d;
+    --fg-muted: rgba(42, 70, 45, 0.6);
+    --fg-soft: rgba(42, 70, 45, 0.4);
+    --border: rgba(42, 70, 45, 0.12);
+    --card-border: rgba(42, 70, 45, 0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 12px;
+    padding: 2rem;
+    min-height: 100vh;
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    font-family: system-ui, sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #fcfdfc;
+  }
+  body[data-theme="light"] h1 { color: #0c100a; }
+  .subtitle {
+    color: var(--fg-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+    font-size: 11px;
+  }
+  .toggle {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--fg);
+    padding: 0.65rem 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .palette-section { margin-bottom: 2rem; }
+  .palette-name {
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 0.75rem;
+    font-size: 10px;
+  }
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 8px;
+  }
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .swatch-color {
+    width: 100%;
+    height: 48px;
+    border: 1px solid var(--card-border);
+  }
+  .swatch-hex { color: var(--fg); font-size: 10px; letter-spacing: 0.05em; }
+  .swatch-label, .swatch-source { color: var(--fg-soft); font-size: 9px; letter-spacing: 0.04em; }
+  .semantic-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .semantic-section h2 {
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 1rem;
+    font-size: 10px;
+  }
+  .token-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  .token-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .token-dot {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .token-name { color: var(--fg); font-size: 10px; letter-spacing: 0.05em; }
+  .token-value { color: var(--fg-soft); font-size: 9px; }
+</style>
+</head>
+<body data-theme="dark">
+<div class="header">
+  <div>
+    <h1>Colour Palette</h1>
+    <p class="subtitle">Nous Research Design System — Snapshot 2026-04-25</p>
+  </div>
+  <button class="toggle" type="button" id="themeToggle">Light Theme</button>
+</div>
+
+<div class="palette-section">
+  <div class="palette-name">Slate — 11 shades</div>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch-color" style="background:#fcfdfc"></div><div class="swatch-hex">#fcfdfc</div><div class="swatch-label">slate[0]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f7f8f7"></div><div class="swatch-hex">#f7f8f7</div><div class="swatch-label">slate[1]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#ecf0eb"></div><div class="swatch-hex">#ecf0eb</div><div class="swatch-label">slate[2]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#dfe3de"></div><div class="swatch-hex">#dfe3de</div><div class="swatch-label">slate[3]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#b9beb6"></div><div class="swatch-hex">#b9beb6</div><div class="swatch-label">slate[4]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#90968d"></div><div class="swatch-hex">#90968d</div><div class="swatch-label">slate[5]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#676d64"></div><div class="swatch-hex">#676d64</div><div class="swatch-label">slate[6]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#464b44"></div><div class="swatch-hex">#464b44</div><div class="swatch-label">slate[7]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#313630"></div><div class="swatch-hex">#313630</div><div class="swatch-label">slate[8]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#20241e"></div><div class="swatch-hex">#20241e</div><div class="swatch-label">slate[9]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#0c100a"></div><div class="swatch-hex">#0c100a</div><div class="swatch-label">slate[10]</div><div class="swatch-source">colors.ts:1</div></div>
+  </div>
+</div>
+
+<div class="palette-section">
+  <div class="palette-name">Forest — 7 shades</div>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch-color" style="background:#dcf4de"></div><div class="swatch-hex">#dcf4de</div><div class="swatch-label">forest[0]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c0edc0"></div><div class="swatch-hex">#c0edc0</div><div class="swatch-label">forest[1]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#90d596"></div><div class="swatch-hex">#90d596</div><div class="swatch-label">forest[2]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4b9551"></div><div class="swatch-hex">#4b9551</div><div class="swatch-label">forest[3]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#396a3d"></div><div class="swatch-hex">#396a3d</div><div class="swatch-label">forest[4]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2a462d"></div><div class="swatch-hex">#2a462d</div><div class="swatch-label">forest[5]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#1f3320"></div><div class="swatch-hex">#1f3320</div><div class="swatch-label">forest[6]</div><div class="swatch-source">colors.ts:1</div></div>
+  </div>
+</div>
+
+<div class="palette-section">
+  <div class="palette-name">Gold — 6 shades</div>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch-color" style="background:#faecc6"></div><div class="swatch-hex">#faecc6</div><div class="swatch-label">gold[0]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#fcde92"></div><div class="swatch-hex">#fcde92</div><div class="swatch-label">gold[1]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f6c955"></div><div class="swatch-hex">#f6c955</div><div class="swatch-label">gold[2]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#ecae13"></div><div class="swatch-hex">#ecae13</div><div class="swatch-label">gold[3]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c49212"></div><div class="swatch-hex">#c49212</div><div class="swatch-label">gold[4]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#956f0e"></div><div class="swatch-hex">#956f0e</div><div class="swatch-label">gold[5]</div><div class="swatch-source">colors.ts:1</div></div>
+  </div>
+</div>
+
+<div class="palette-section">
+  <div class="palette-name">Lime — 6 shades</div>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch-color" style="background:#e6ffd1"></div><div class="swatch-hex">#e6ffd1</div><div class="swatch-label">lime[0]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#cdffa3"></div><div class="swatch-hex">#cdffa3</div><div class="swatch-label">lime[1]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#90f53d"></div><div class="swatch-hex">#90f53d</div><div class="swatch-label">lime[2]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#61cb0b"></div><div class="swatch-hex">#61cb0b</div><div class="swatch-label">lime[3]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4b970c"></div><div class="swatch-hex">#4b970c</div><div class="swatch-label">lime[4]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2f5e08"></div><div class="swatch-hex">#2f5e08</div><div class="swatch-label">lime[5]</div><div class="swatch-source">colors.ts:1</div></div>
+  </div>
+</div>
+
+<div class="palette-section">
+  <div class="palette-name">Success — 6 shades</div>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch-color" style="background:#e3fcfc"></div><div class="swatch-hex">#e3fcfc</div><div class="swatch-label">success[0]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c2f0f0"></div><div class="swatch-hex">#c2f0f0</div><div class="swatch-label">success[1]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#6ed8d8"></div><div class="swatch-hex">#6ed8d8</div><div class="swatch-label">success[2]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#23b3b3"></div><div class="swatch-hex">#23b3b3</div><div class="swatch-label">success[3]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#188181"></div><div class="swatch-hex">#188181</div><div class="swatch-label">success[4]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#0c5555"></div><div class="swatch-hex">#0c5555</div><div class="swatch-label">success[5]</div><div class="swatch-source">colors.ts:1</div></div>
+  </div>
+</div>
+
+<div class="palette-section">
+  <div class="palette-name">Error — 6 shades</div>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch-color" style="background:#feede7"></div><div class="swatch-hex">#feede7</div><div class="swatch-label">error[0]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#fdcebe"></div><div class="swatch-hex">#fdcebe</div><div class="swatch-label">error[1]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f7906e"></div><div class="swatch-hex">#f7906e</div><div class="swatch-label">error[2]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#dd5c31"></div><div class="swatch-hex">#dd5c31</div><div class="swatch-label">error[3]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#a5360d"></div><div class="swatch-hex">#a5360d</div><div class="swatch-label">error[4]</div><div class="swatch-source">colors.ts:1</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#5e2308"></div><div class="swatch-hex">#5e2308</div><div class="swatch-label">error[5]</div><div class="swatch-source">colors.ts:1</div></div>
+  </div>
+</div>
+
+<div class="semantic-section">
+  <h2>Semantic Tokens</h2>
+  <div class="token-grid">
+    <div class="token-item"><div class="token-dot" style="background:#041c1c"></div><div><div class="token-name">--background</div><div class="token-value">dark: #041c1c · light view: slate[2]</div></div></div>
+    <div class="token-item"><div class="token-dot" style="background:#fcfdfc"></div><div><div class="token-name">--foreground</div><div class="token-value">dark: #fcfdfc · light text: #0c100a</div></div></div>
+    <div class="token-item"><div class="token-dot" style="background:#ffe6cb"></div><div><div class="token-name">--midground</div><div class="token-value">dark body text</div></div></div>
+    <div class="token-item"><div class="token-dot" style="background:#ffbd38"></div><div><div class="token-name">--accent</div><div class="token-value">portfolio accent</div></div></div>
+    <div class="token-item"><div class="token-dot" style="background:#0e1f0e"></div><div><div class="token-name">--forest-surface</div><div class="token-value">tag / surface tone</div></div></div>
+    <div class="token-item"><div class="token-dot" style="background:#1f3320"></div><div><div class="token-name">--forest-border</div><div class="token-value">tag border tone</div></div></div>
+  </div>
+</div>
+
+<script>
+  const body = document.body;
+  const toggle = document.getElementById("themeToggle");
+  toggle.addEventListener("click", () => {
+    const next = body.dataset.theme === "dark" ? "light" : "dark";
+    body.dataset.theme = next;
+    toggle.textContent = next === "dark" ? "Light Theme" : "Dark Theme";
+  });
+</script>
+</body>
+</html>
