@@ -21,7 +21,7 @@ export default function SiteNav() {
               pathname === '/' ? 'text-[--midground]' : 'opacity-60 hover:opacity-100'
             }`}
           >
-            Projects
+            Home
           </Link>
         </nav>
       </div>
