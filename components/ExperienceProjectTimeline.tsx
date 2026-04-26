@@ -6,7 +6,7 @@ export type TimelineItem = {
   title: string
   subtitle: string
   date: string
-  sortDate: string
+  startDate: string
   description: string
   tags: string[]
   href: string

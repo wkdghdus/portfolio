@@ -1,6 +1,6 @@
 ---
 role: Applied AI Developer Intern
-organization: Archisketch
+organization: Growth R&D @ Archisketch
 team: Growth R&D Team
 location: South Korea
 startDate: 2024-09

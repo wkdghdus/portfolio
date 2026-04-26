@@ -27,22 +27,30 @@ export async function getProjectBySlug(slug: string): Promise<Project> {
   }
 }
 
+function normalizeDate(val: unknown): string {
+  if (val instanceof Date) return val.toISOString().slice(0, 7)
+  return String(val)
+}
+
 function normalizeFrontmatter(data: Record<string, unknown>): ProjectFrontmatter {
-  const date = data.date
-  const normalizedDate =
-    date instanceof Date ? date.toISOString().slice(0, 10) : String(date)
   return {
     title: String(data.title),
-    date: normalizedDate,
+    organization: String(data.organization ?? 'Personal Project'),
+    startDate: normalizeDate(data.startDate ?? data.date),
+    endDate: typeof data.endDate !== 'undefined' ? normalizeDate(data.endDate) : undefined,
     description: String(data.description),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
-    coverImage:
-      typeof data.coverImage === 'string' ? data.coverImage : undefined,
+    coverImage: typeof data.coverImage === 'string' ? data.coverImage : undefined,
+    githubUrl: typeof data.githubUrl === 'string' ? data.githubUrl : undefined,
   }
 }
 
 export async function getAllProjects(): Promise<Project[]> {
   const slugs = getProjectSlugs()
   const projects = await Promise.all(slugs.map((slug) => getProjectBySlug(slug)))
-  return projects.sort((a, b) => (a.date < b.date ? 1 : -1))
+  return projects.sort((a, b) => {
+    const dateA = a.endDate ?? a.startDate
+    const dateB = b.endDate ?? b.startDate
+    return dateA < dateB ? 1 : -1
+  })
 }

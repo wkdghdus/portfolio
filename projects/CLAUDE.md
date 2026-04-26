@@ -13,10 +13,13 @@ Authored content. One folder per project — add a folder, get a page.
 ```yaml
 ---
 title: string         # required
-date: string          # required — YYYY-MM-DD, newest first
+organization: string  # required — team, company, or "Personal Project"
+startDate: string     # required — YYYY-MM format
+endDate: string       # optional — YYYY-MM format; omit if ongoing
 description: string   # required
 tags: string[]        # required
 coverImage: string    # optional — e.g. assets/preview.jpg
+githubUrl: string     # optional — full URL e.g. https://github.com/user/repo
 ---
 ```
 
