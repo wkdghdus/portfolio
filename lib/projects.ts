@@ -41,6 +41,7 @@ function normalizeFrontmatter(data: Record<string, unknown>): ProjectFrontmatter
     description: String(data.description),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     coverImage: typeof data.coverImage === 'string' ? data.coverImage : undefined,
+    githubUrl: typeof data.githubUrl === 'string' ? data.githubUrl : undefined,
   }
 }
 

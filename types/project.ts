@@ -7,6 +7,7 @@ export type Project = {
   description: string
   tags: string[]
   coverImage?: string
+  githubUrl?: string
   content: string
 }
 

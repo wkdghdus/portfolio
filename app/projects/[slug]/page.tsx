@@ -29,6 +29,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         endDate={project.endDate}
         tags={project.tags}
         description={project.description}
+        githubUrl={project.githubUrl}
       />
       <article
         className="prose max-w-none"

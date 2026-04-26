@@ -7,6 +7,7 @@ type ProjectHeaderProps = {
   endDate?: string
   tags: string[]
   description: string
+  githubUrl?: string
 }
 
 export default function ProjectHeader({
@@ -16,6 +17,7 @@ export default function ProjectHeader({
   endDate,
   tags,
   description,
+  githubUrl,
 }: ProjectHeaderProps) {
   const dateRange = endDate
     ? `${formatYearMonth(startDate)} — ${formatYearMonth(endDate)}`
@@ -35,6 +37,16 @@ export default function ProjectHeader({
       <p className="mt-4 text-lg text-[--midground]">
         {description}
       </p>
+      {githubUrl && (
+        <a
+          href={githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex items-center gap-2 border border-[--border] px-4 py-2 font-mono text-xs uppercase tracking-[0.12em] text-[--muted] transition-colors duration-200 hover:border-[--accent] hover:text-[--accent]"
+        >
+          GitHub →
+        </a>
+      )}
       {tags.length > 0 && (
         <ul className="mt-6 flex flex-wrap gap-2">
           {tags.map((tag) => (
