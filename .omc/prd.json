@@ -1,108 +1,106 @@
 {
-  "task": "Build Nous Research design reference library at docs/design-reference/",
+  "task": "Portfolio — Unified Experience + Project Timeline",
+  "plan": ".omx/plans/project-timeline-20260425T213641Z.md",
   "stories": [
     {
       "id": "US-001",
-      "title": "Scaffold directory structure + anchor docs",
+      "title": "Add Experience type definitions",
       "passes": true,
       "acceptanceCriteria": [
-        "docs/design-reference/ directory exists ✓",
-        "docs/design-reference/README.md exists with navigable links to all sections ✓",
-        "docs/design-reference/NORTH_STAR.md exists with exactly 5 inviolable aesthetic rules ✓"
+        "types/experience.ts exists and exports Experience and ExperienceFrontmatter ✓",
+        "Experience has: slug, role, organization, startDate, endDate (optional), description, tags, coverImage (optional), content ✓",
+        "ExperienceFrontmatter = Omit<Experience, 'slug' | 'content'> ✓",
+        "TypeScript compiles with no errors in types/experience.ts ✓"
       ]
     },
     {
       "id": "US-002",
-      "title": "Token documentation: colors.md + typography.md",
+      "title": "Add lib/experience.ts data loader",
       "passes": true,
       "acceptanceCriteria": [
-        "docs/design-reference/tokens/colors.md exists with all 6 palettes (slate 11 shades, forest 7, gold 6, lime 6, success 6, error 6) ✓",
-        "docs/design-reference/tokens/colors.md includes semantic mapping table ✓",
-        "docs/design-reference/tokens/typography.md exists with all font families, weights, letter-spacing, usage rules ✓",
-        "docs/design-reference/tokens/typography.md includes portfolio-safe substitutes for Mondwest/Soufflet ✓"
+        "lib/experience.ts exists and exports getExperienceSlugs(), getExperienceBySlug(slug), getAllExperience() ✓",
+        "Loads experience-description.md from experience/<slug>/ directories ✓",
+        "Sorts newest-first by endDate ?? startDate ✓",
+        "normalizeFrontmatter handles Date objects and missing optional fields ✓",
+        "TypeScript compiles with no errors in lib/experience.ts ✓"
       ]
     },
     {
       "id": "US-003",
-      "title": "Token documentation: css-variables.md + spacing.md",
+      "title": "Add authored experience content (3 seed entries)",
       "passes": true,
       "acceptanceCriteria": [
-        "docs/design-reference/tokens/css-variables.md exists with verbatim :root block from hermes-agent + portfolio globals.css ✓",
-        "docs/design-reference/tokens/spacing.md exists with gap/padding/icon sizing patterns ✓"
+        "experience/AGENTS.md exists documenting the experience content format ✓",
+        "experience/trend-micro/experience-description.md exists with valid frontmatter ✓",
+        "experience/escape-platforms/experience-description.md exists with valid frontmatter ✓",
+        "experience/rbc-borealis/experience-description.md exists with valid frontmatter ✓",
+        "All three entries load without error — build generated /experience/escape-platforms, /experience/rbc-borealis, /experience/trend-micro ✓"
       ]
     },
     {
       "id": "US-004",
-      "title": "Effects: noise, dot-grid, SVG pattern, glow, bevel, shadow-card",
+      "title": "Add app/experience/[slug]/page.tsx route",
       "passes": true,
       "acceptanceCriteria": [
-        "docs/design-reference/effects/noise-grain.md exists with CSS code and preview HTML ✓",
-        "docs/design-reference/effects/dot-grid.md exists with 28px grid code ✓",
-        "docs/design-reference/effects/svg-background-pattern.md exists ✓",
-        "docs/design-reference/effects/glow-shadow.md exists with Tailwind + CSS snippets ✓",
-        "docs/design-reference/effects/bevel-button.md exists with inset box-shadow CSS ✓",
-        "docs/design-reference/effects/shadow-card.md exists with translateZ code ✓"
+        "app/experience/[slug]/page.tsx exists ✓",
+        "generateStaticParams() uses getExperienceSlugs() ✓",
+        "Renders ExperienceHeader with role, organization, dateRange, tags, description ✓",
+        "Renders markdown body in <article className='prose max-w-none'> ✓",
+        "Back link navigates to / with Nous nav typography pattern ✓",
+        "TypeScript compiles with no errors in app/experience/[slug]/page.tsx ✓"
       ]
     },
     {
       "id": "US-005",
-      "title": "Effects: dithered-sphere WebGL full pipeline",
+      "title": "Add ExperienceHeader component",
       "passes": true,
       "acceptanceCriteria": [
-        "docs/design-reference/effects/dithered-sphere.md exists ✓",
-        "File contains full frag.glsl code verbatim ✓",
-        "File contains full dither.glsl code verbatim ✓",
-        "File contains regl.ts createSphereAnimation TypeScript code ✓",
-        "File lists required npm packages (regl, gl-matrix) ✓"
+        "components/ExperienceHeader.tsx exists with props: role, organization, dateRange, tags, description ✓",
+        "Visually mirrors ProjectHeader.tsx structure and Nous token usage ✓",
+        "Tags use font-mono text-xs uppercase tracking-[0.12em] px-2 py-0.5 with forest-border/forest-surface tokens ✓",
+        "TypeScript compiles with no errors in components/ExperienceHeader.tsx ✓"
       ]
     },
     {
       "id": "US-006",
-      "title": "Component snippets: all 7 components",
+      "title": "Add ExperienceProjectTimeline component",
       "passes": true,
       "acceptanceCriteria": [
-        "docs/design-reference/components/badge.md exists with 6 variants and TSX snippet ✓",
-        "docs/design-reference/components/button.md exists with 4 variants and bevel code ✓",
-        "docs/design-reference/components/card.md exists with CSS-var-driven pattern ✓",
-        "docs/design-reference/components/outline-box.md exists with fieldset legend pattern ✓",
-        "docs/design-reference/components/progress-bar.md exists with repeating-gradient code ✓",
-        "docs/design-reference/components/status-chip.md exists with 5 status colors + pulse keyframe ✓",
-        "docs/design-reference/components/tag.md exists with portfolio canonical classes ✓"
+        "components/ExperienceProjectTimeline.tsx exists and accepts items: TimelineItem[] ✓",
+        "TimelineItem is a discriminated union with kind: 'project' | 'experience' ✓",
+        "Renders empty state when items.length === 0 ✓",
+        "Desktop layout: three-column grid with central spine and alternating left/right cards at md: breakpoint ✓",
+        "Mobile layout: single-column with left spine, no horizontal overflow ✓",
+        "Each card shows: type badge, title, subtitle, date, description, tags, and a Link to href ✓",
+        "Card hover: border-[--accent] shadow-[0_0_16px_var(--accent-glow)] ✓",
+        "Spine: vertical line with circular gold-ring markers per entry ✓",
+        "Tags use tracking-[0.12em] ✓",
+        "TypeScript compiles with no errors in components/ExperienceProjectTimeline.tsx ✓"
       ]
     },
     {
       "id": "US-007",
-      "title": "Layout blueprints + interaction catalog",
+      "title": "Update app/page.tsx to use timeline",
       "passes": true,
       "acceptanceCriteria": [
-        "docs/design-reference/layout/sidebar-layout.md exists ✓",
-        "docs/design-reference/layout/card-grid.md exists ✓",
-        "docs/design-reference/layout/navigation.md exists ✓",
-        "docs/design-reference/interactions/hover-opacity-reveal.md exists ✓",
-        "docs/design-reference/interactions/hover-glow.md exists ✓",
-        "docs/design-reference/interactions/active-press.md exists ✓",
-        "docs/design-reference/interactions/pulse-animation.md exists ✓",
-        "docs/design-reference/interactions/slide-transition.md exists ✓"
+        "getAllExperience is imported and called alongside getAllProjects ✓",
+        "Both data sources are fetched with Promise.all ✓",
+        "Projects and experiences are normalized into TimelineItem[] and sorted newest-first ✓",
+        "Featured Work / Recent Systems section replaced with ExperienceProjectTimeline ✓",
+        "Section heading changed to 'Timeline' ✓",
+        "featuredProjects variable removed ✓",
+        "Complete Projects index section (id='projects') is preserved unchanged ✓",
+        "TypeScript compiles with no errors in app/page.tsx ✓"
       ]
     },
     {
       "id": "US-008",
-      "title": "Visual assets: palette-swatches.html + font-specimen.html",
+      "title": "Add public/experience symlink for asset serving",
       "passes": true,
       "acceptanceCriteria": [
-        "docs/design-reference/assets/palette-swatches.html exists as standalone HTML with no framework deps ✓",
-        "palette-swatches.html renders all 6 palettes with hex labels on dark background ✓",
-        "docs/design-reference/assets/font-specimen.html exists with Google Fonts CDN only ✓",
-        "font-specimen.html demonstrates H1/H2/body/badge/button/nav hierarchy ✓"
-      ]
-    },
-    {
-      "id": "US-009",
-      "title": "Build still passes after adding docs/",
-      "passes": true,
-      "acceptanceCriteria": [
-        "npm run build exits with code 0 ✓",
-        "No TypeScript errors referencing docs/ files ✓"
+        "public/experience symlink exists pointing to ../experience ✓",
+        "Symlink resolves correctly (readlink = ../experience) ✓",
+        "npm run build succeeds — statically generates project AND experience detail pages with 0 TypeScript errors ✓"
       ]
     }
   ]

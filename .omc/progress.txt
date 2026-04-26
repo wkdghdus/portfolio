@@ -1,3 +1,23 @@
+## Portfolio Nous Redesign — 2026-04-25
+
+### Files Changed
+- app/globals.css — body font-family: Arial → var(--font-sans)
+- components/SiteNav.tsx — new: top nav, brand HLJ, Projects link, opacity-reveal, border-b
+- app/layout.tsx — import + mount SiteNav above {children}
+- components/ProjectCard.tsx — removed rounded-lg, aspect-video → h-48, reordered anatomy (tags→title→desc→date), fixed tag classes, removed font-bold
+- components/ProjectHeader.tsx — fixed tag classes (removed rounded-full, font-medium), removed font-black from h1
+- app/projects/[slug]/page.tsx — back link → Nous nav pattern, removed prose-neutral
+- app/page.tsx — removed placeholder description, removed font-black from h1
+
+### Build: ✓ 0 TypeScript errors, 5 static pages generated
+
+### Learnings
+- Bebas Neue is 400-only — font-bold/font-black on font-display are silently ignored; omit weight modifiers on display text
+- prose-neutral overrides custom --tw-prose-* vars in .prose {}; removing it lets globals.css tokens take effect
+- SiteNav is the only client component (needs usePathname)
+
+---
+
 RALPH SESSION: Nous Design Reference Library
 Date: 2026-04-25
 Task: Build docs/design-reference/ from nousnet + hermes-agent source
@@ -22,3 +42,33 @@ SOURCE DATA CAPTURED (2026-04-25):
 
 ITERATIONS:
 - Iteration 1: PRD written, beginning parallel file creation for all stories
+
+---
+
+## Portfolio — Unified Experience + Project Timeline — 2026-04-25
+
+### Files Created
+- types/experience.ts — Experience and ExperienceFrontmatter types
+- lib/experience.ts — getExperienceSlugs, getExperienceBySlug, getAllExperience, sorted newest-first by endDate ?? startDate
+- experience/AGENTS.md — authored content format docs
+- experience/trend-micro/experience-description.md — seed entry
+- experience/escape-platforms/experience-description.md — seed entry
+- experience/rbc-borealis/experience-description.md — seed entry
+- app/experience/[slug]/page.tsx — static experience detail route
+- components/ExperienceHeader.tsx — detail page header (mirrors ProjectHeader)
+- components/ExperienceProjectTimeline.tsx — alternating spine timeline, TimelineItem discriminated union
+- public/experience — symlink → ../experience for asset serving
+
+### Files Modified
+- app/page.tsx — replaced Featured Work grid with ExperienceProjectTimeline; added Promise.all for parallel data fetch; kept complete Projects index
+
+### Build: ✓ 0 TypeScript errors, 13 static pages generated
+- /experience/escape-platforms, /experience/rbc-borealis, /experience/trend-micro
+- /projects/distributed-kv, /projects/generative-art, /projects/neural-style-transfer + 3 more
+
+### Learnings
+- Desktop alternating timeline uses md:grid-cols-[minmax(0,1fr)_3rem_minmax(0,1fr)] three-column pattern with index % 2 to place cards
+- Mobile uses grid-cols-[1.5rem_minmax(0,1fr)] with explicit spine div per item (avoids pseudo-element Tailwind complexity)
+- Experience sort key: endDate ?? startDate (experience entries may still be ongoing)
+- TimelineItem is a union in components/ExperienceProjectTimeline.tsx and imported by app/page.tsx
+- public/experience symlink mirrors public/projects pattern for static asset serving

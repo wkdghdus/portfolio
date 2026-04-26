@@ -134,39 +134,69 @@
   },
   "hotPaths": [
     {
-      "path": "app/globals.css",
-      "accessCount": 11,
-      "lastAccessed": 1777127099710,
-      "type": "file"
-    },
-    {
       "path": "app/layout.tsx",
-      "accessCount": 11,
-      "lastAccessed": 1777127099726,
-      "type": "file"
-    },
-    {
-      "path": "components/ProjectCard.tsx",
-      "accessCount": 8,
-      "lastAccessed": 1777127103678,
+      "accessCount": 16,
+      "lastAccessed": 1777148739880,
       "type": "file"
     },
     {
       "path": "app/page.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1777127103732,
+      "accessCount": 16,
+      "lastAccessed": 1777170781043,
+      "type": "file"
+    },
+    {
+      "path": "components/ProjectCard.tsx",
+      "accessCount": 15,
+      "lastAccessed": 1777167210149,
+      "type": "file"
+    },
+    {
+      "path": "app/globals.css",
+      "accessCount": 14,
+      "lastAccessed": 1777148739077,
       "type": "file"
     },
     {
       "path": "app/projects/[slug]/page.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1777127107818,
+      "accessCount": 13,
+      "lastAccessed": 1777167206627,
       "type": "file"
     },
     {
       "path": "components/ProjectHeader.tsx",
-      "accessCount": 6,
-      "lastAccessed": 1777127103712,
+      "accessCount": 13,
+      "lastAccessed": 1777167210336,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 5,
+      "lastAccessed": 1777146437575,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/NORTH_STAR.md",
+      "accessCount": 5,
+      "lastAccessed": 1777148741519,
+      "type": "file"
+    },
+    {
+      "path": "AGENTS.md",
+      "accessCount": 4,
+      "lastAccessed": 1777146437971,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/README.md",
+      "accessCount": 3,
+      "lastAccessed": 1777147714475,
+      "type": "file"
+    },
+    {
+      "path": "types/project.ts",
+      "accessCount": 3,
+      "lastAccessed": 1777167205281,
       "type": "file"
     },
     {
@@ -182,9 +212,51 @@
       "type": "file"
     },
     {
-      "path": "types/project.ts",
+      "path": "docs/design-reference/tokens/colors.md",
       "accessCount": 2,
-      "lastAccessed": 1777127103891,
+      "lastAccessed": 1777147711974,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/tokens/typography.md",
+      "accessCount": 2,
+      "lastAccessed": 1777147712331,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/tokens/spacing.md",
+      "accessCount": 2,
+      "lastAccessed": 1777147712386,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/components/card.md",
+      "accessCount": 2,
+      "lastAccessed": 1777148271265,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/effects/noise-grain.md",
+      "accessCount": 2,
+      "lastAccessed": 1777148271602,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/layout/card-grid.md",
+      "accessCount": 2,
+      "lastAccessed": 1777148271877,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/layout/navigation.md",
+      "accessCount": 2,
+      "lastAccessed": 1777148272934,
+      "type": "file"
+    },
+    {
+      "path": "docs/design-reference/components/tag.md",
+      "accessCount": 2,
+      "lastAccessed": 1777148272963,
       "type": "file"
     },
     {
@@ -194,51 +266,9 @@
       "type": "file"
     },
     {
-      "path": "CLAUDE.md",
-      "accessCount": 1,
-      "lastAccessed": 1777127107264,
-      "type": "file"
-    },
-    {
-      "path": "docs/design-reference/README.md",
-      "accessCount": 1,
-      "lastAccessed": 1777127746042,
-      "type": "file"
-    },
-    {
-      "path": "docs/design-reference/NORTH_STAR.md",
-      "accessCount": 1,
-      "lastAccessed": 1777127762339,
-      "type": "file"
-    },
-    {
-      "path": "docs/design-reference/tokens/colors.md",
-      "accessCount": 1,
-      "lastAccessed": 1777127786570,
-      "type": "file"
-    },
-    {
-      "path": "docs/design-reference/tokens/typography.md",
-      "accessCount": 1,
-      "lastAccessed": 1777127813462,
-      "type": "file"
-    },
-    {
       "path": "docs/design-reference/tokens/css-variables.md",
       "accessCount": 1,
       "lastAccessed": 1777127833668,
-      "type": "file"
-    },
-    {
-      "path": "docs/design-reference/tokens/spacing.md",
-      "accessCount": 1,
-      "lastAccessed": 1777127851616,
-      "type": "file"
-    },
-    {
-      "path": "docs/design-reference/effects/noise-grain.md",
-      "accessCount": 1,
-      "lastAccessed": 1777127877084,
       "type": "file"
     },
     {
@@ -290,12 +320,6 @@
       "type": "file"
     },
     {
-      "path": "docs/design-reference/components/card.md",
-      "accessCount": 1,
-      "lastAccessed": 1777128052206,
-      "type": "file"
-    },
-    {
       "path": "docs/design-reference/components/outline-box.md",
       "accessCount": 1,
       "lastAccessed": 1777128067668,
@@ -314,27 +338,9 @@
       "type": "file"
     },
     {
-      "path": "docs/design-reference/components/tag.md",
-      "accessCount": 1,
-      "lastAccessed": 1777128114960,
-      "type": "file"
-    },
-    {
       "path": "docs/design-reference/layout/sidebar-layout.md",
       "accessCount": 1,
       "lastAccessed": 1777128138693,
-      "type": "file"
-    },
-    {
-      "path": "docs/design-reference/layout/card-grid.md",
-      "accessCount": 1,
-      "lastAccessed": 1777128151044,
-      "type": "file"
-    },
-    {
-      "path": "docs/design-reference/layout/navigation.md",
-      "accessCount": 1,
-      "lastAccessed": 1777128164757,
       "type": "file"
     },
     {
@@ -377,6 +383,54 @@
       "path": "docs/design-reference/assets/font-specimen.html",
       "accessCount": 1,
       "lastAccessed": 1777128303457,
+      "type": "file"
+    },
+    {
+      "path": "app/CLAUDE.md",
+      "accessCount": 1,
+      "lastAccessed": 1777146438264,
+      "type": "file"
+    },
+    {
+      "path": "app/AGENTS.md",
+      "accessCount": 1,
+      "lastAccessed": 1777146438471,
+      "type": "file"
+    },
+    {
+      "path": "components/CLAUDE.md",
+      "accessCount": 1,
+      "lastAccessed": 1777146438678,
+      "type": "file"
+    },
+    {
+      "path": "components/AGENTS.md",
+      "accessCount": 1,
+      "lastAccessed": 1777146438896,
+      "type": "file"
+    },
+    {
+      "path": "lib/CLAUDE.md",
+      "accessCount": 1,
+      "lastAccessed": 1777146439237,
+      "type": "file"
+    },
+    {
+      "path": "lib/AGENTS.md",
+      "accessCount": 1,
+      "lastAccessed": 1777146439440,
+      "type": "file"
+    },
+    {
+      "path": "types/CLAUDE.md",
+      "accessCount": 1,
+      "lastAccessed": 1777146439640,
+      "type": "file"
+    },
+    {
+      "path": "types/AGENTS.md",
+      "accessCount": 1,
+      "lastAccessed": 1777146439844,
       "type": "file"
     }
   ],

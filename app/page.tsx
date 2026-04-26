@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import ProjectCard from '@/components/ProjectCard'
+import ExperienceProjectTimeline from '@/components/ExperienceProjectTimeline'
+import type { TimelineItem } from '@/components/ExperienceProjectTimeline'
 import { getAllProjects } from '@/lib/projects'
+import { getAllExperience, formatYearMonth } from '@/lib/experience'
 import type { Project } from '@/types/project'
 
 function getTopTags(projects: Project[]): string[] {
@@ -22,12 +25,44 @@ function getTopTags(projects: Project[]): string[] {
 }
 
 export default async function HomePage() {
-  const projects = await getAllProjects()
-  const featuredProjects = projects.slice(0, 2)
+  const [projects, experiences] = await Promise.all([
+    getAllProjects(),
+    getAllExperience(),
+  ])
+
   const newestProject = projects[0]
   const topTags = getTopTags(projects)
-  const projectLabel = projects.length === 1 ? 'Project' : 'Projects'
   const tagSummary = topTags.length > 0 ? topTags.join(' / ') : 'No tags yet'
+
+  const projectItems: TimelineItem[] = projects.map((p) => ({
+    kind: 'project',
+    slug: p.slug,
+    title: p.title,
+    subtitle: 'Project',
+    date: formatYearMonth(p.date),
+    sortDate: p.date,
+    description: p.description,
+    tags: p.tags,
+    href: `/projects/${p.slug}`,
+  }))
+
+  const experienceItems: TimelineItem[] = experiences.map((e) => ({
+    kind: 'experience',
+    slug: e.slug,
+    title: e.role,
+    subtitle: e.organization,
+    date: e.endDate
+      ? `${formatYearMonth(e.startDate)} — ${formatYearMonth(e.endDate)}`
+      : `${formatYearMonth(e.startDate)} — Present`,
+    sortDate: e.endDate ?? e.startDate,
+    description: e.description,
+    tags: e.tags,
+    href: `/experience/${e.slug}`,
+  }))
+
+  const timelineItems: TimelineItem[] = [...projectItems, ...experienceItems].sort(
+    (a, b) => (a.sortDate < b.sortDate ? 1 : -1)
+  )
 
   return (
     <main className="w-full flex-1">
@@ -46,10 +81,10 @@ export default async function HomePage() {
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
-              href="#projects"
+              href="#timeline"
               className="inline-flex items-center justify-center border border-[--accent] bg-[--accent] px-5 py-3 font-display text-xs uppercase tracking-[0.12em] text-[--background] transition-shadow duration-200 hover:shadow-[0_0_18px_var(--accent-glow)]"
             >
-              View Projects
+              View Timeline
             </Link>
             {newestProject && (
               <Link
@@ -128,37 +163,23 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-14">
-        <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <section id="timeline" className="mx-auto w-full max-w-6xl px-6 py-14">
+        <div className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.15em] text-[--accent]">
-              Featured Work
+              Experience + Projects
             </p>
             <h2 className="mt-2 font-display text-3xl uppercase tracking-[0.14em] text-[--foreground]">
-              Recent Systems
+              Timeline
             </h2>
           </div>
           <p className="max-w-xl text-sm leading-6 text-[--midground]">
-            Newest entries are highlighted first, then preserved again in the
-            complete index for scanning and comparison.
+            Experience and projects arranged together by date for a single view
+            of applied systems work.
           </p>
         </div>
 
-        {featuredProjects.length > 0 ? (
-          <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {featuredProjects.map((project) => (
-              <li key={project.slug}>
-                <ProjectCard project={project} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div className="border border-[--border] bg-[--surface] p-8 text-center">
-            <p className="font-mono text-xs uppercase tracking-[0.15em] text-[--muted]">
-              Featured work will appear after project entries are added.
-            </p>
-          </div>
-        )}
+        <ExperienceProjectTimeline items={timelineItems} />
       </section>
 
       <section id="projects" className="mx-auto w-full max-w-6xl px-6 pb-20">
