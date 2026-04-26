@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Project } from '@/types/project'
+import { formatYearMonth } from '@/lib/experience'
 
 type ProjectCardProps = {
   project: Project
@@ -9,6 +10,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const imageSrc = project.coverImage
     ? `/projects/${project.slug}/${project.coverImage}`
     : null
+
+  const dateRange = project.endDate
+    ? `${formatYearMonth(project.startDate)} — ${formatYearMonth(project.endDate)}`
+    : formatYearMonth(project.startDate)
 
   return (
     <Link
@@ -43,11 +48,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <h2 className="font-display text-lg uppercase tracking-[0.12em] text-[--foreground]">
           {project.title}
         </h2>
+        <p className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-[--muted]">
+          {project.organization}
+        </p>
         <p className="text-sm text-[--midground] leading-relaxed line-clamp-3">
           {project.description}
         </p>
         <time className="text-xs text-[--muted] font-mono uppercase tracking-[0.08em]">
-          {project.date}
+          {dateRange}
         </time>
       </div>
     </Link>

@@ -1,23 +1,36 @@
+import { formatYearMonth } from '@/lib/experience'
+
 type ProjectHeaderProps = {
   title: string
-  date: string
+  organization: string
+  startDate: string
+  endDate?: string
   tags: string[]
   description: string
 }
 
 export default function ProjectHeader({
   title,
-  date,
+  organization,
+  startDate,
+  endDate,
   tags,
   description,
 }: ProjectHeaderProps) {
+  const dateRange = endDate
+    ? `${formatYearMonth(startDate)} — ${formatYearMonth(endDate)}`
+    : formatYearMonth(startDate)
+
   return (
     <header className="mb-10 border-b border-[--border] pb-8">
-      <h1 className="font-display text-4xl uppercase tracking-[0.15em] text-[--foreground]">
+      <p className="font-mono text-xs uppercase tracking-[0.15em] text-[--accent]">
+        {organization}
+      </p>
+      <h1 className="mt-2 font-display text-4xl uppercase tracking-[0.15em] text-[--foreground]">
         {title}
       </h1>
       <time className="mt-3 block text-sm text-[--muted]">
-        {date}
+        {dateRange}
       </time>
       <p className="mt-4 text-lg text-[--midground]">
         {description}

@@ -38,9 +38,11 @@ export default async function HomePage() {
     kind: 'project',
     slug: p.slug,
     title: p.title,
-    subtitle: 'Project',
-    date: formatYearMonth(p.date),
-    sortDate: p.date,
+    subtitle: p.organization,
+    date: p.endDate
+      ? `${formatYearMonth(p.startDate)} — ${formatYearMonth(p.endDate)}`
+      : formatYearMonth(p.startDate),
+    startDate: p.startDate,
     description: p.description,
     tags: p.tags,
     href: `/projects/${p.slug}`,
@@ -54,14 +56,14 @@ export default async function HomePage() {
     date: e.endDate
       ? `${formatYearMonth(e.startDate)} — ${formatYearMonth(e.endDate)}`
       : `${formatYearMonth(e.startDate)} — Present`,
-    sortDate: e.endDate ?? e.startDate,
+    startDate: e.startDate,
     description: e.description,
     tags: e.tags,
     href: `/experience/${e.slug}`,
   }))
 
   const timelineItems: TimelineItem[] = [...projectItems, ...experienceItems].sort(
-    (a, b) => (a.sortDate < b.sortDate ? 1 : -1)
+    (a, b) => (a.startDate < b.startDate ? 1 : -1)
   )
 
   return (
@@ -149,7 +151,7 @@ export default async function HomePage() {
               Latest
             </p>
             <p className="mt-2 font-display text-2xl uppercase tracking-[0.12em] text-[--foreground]">
-              {newestProject?.date ?? 'Pending'}
+              {newestProject ? formatYearMonth(newestProject.endDate ?? newestProject.startDate) : 'Pending'}
             </p>
           </div>
           <div className="border border-[--border-subtle] bg-[--background]/70 p-4">
