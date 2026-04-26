@@ -4,8 +4,9 @@ startDate: 2025-10
 endDate: 2026-03
 organization: Western AI
 description: A multimodal YouTube Shorts forecasting platform that collects short-form video data, generates video/audio/text embeddings, fuses modalities, trains leakage-resistant predictors, and serves 7-day and 30-day view forecasts through a conference-demoed web application.
+githubUrl: https://github.com/Western-Artificial-Intelligence/video-virality-predictor
 tags: [machine-learning, multimodal-ai, forecasting, youtube-shorts, aws-s3, pytorch, scikit-learn, nlp, computer-vision, audio]
-coverImage: assets/video-virality-predictor-preview.jpg
+# coverImage: assets/video-virality-predictor-preview.jpg
 ---
 
 ## Overview
