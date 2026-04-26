@@ -21,10 +21,10 @@ export default async function ExperiencePage({ params }: ExperiencePageProps) {
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16">
       <Link
-        href="/"
+        href="/experience"
         className="mb-8 inline-block font-display text-[0.8rem] uppercase tracking-[0.12em] opacity-60 transition-opacity duration-200 hover:opacity-100"
       >
-        &larr; Back
+        &larr; Back to experience
       </Link>
       <ExperienceHeader
         role={experience.role}

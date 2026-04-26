@@ -21,9 +21,9 @@ export default function ExperienceHeader({
       <h1 className="mt-2 font-display text-4xl uppercase tracking-[0.15em] text-[--foreground]">
         {role}
       </h1>
-      <time className="mt-3 block text-sm text-[--muted]">
+      <p className="mt-3 text-sm text-[--muted]">
         {dateRange}
-      </time>
+      </p>
       <p className="mt-4 text-lg text-[--midground]">
         {description}
       </p>
