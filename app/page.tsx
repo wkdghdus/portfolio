@@ -2,15 +2,17 @@ import Link from 'next/link'
 import ProjectCard from '@/components/ProjectCard'
 import ExperienceProjectTimeline from '@/components/ExperienceProjectTimeline'
 import type { TimelineItem } from '@/components/ExperienceProjectTimeline'
+import RotatingTags from '@/components/RotatingTags'
 import { getAllProjects } from '@/lib/projects'
 import { getAllExperience, formatYearMonth } from '@/lib/experience'
 import type { Project } from '@/types/project'
+import type { Experience } from '@/types/experience'
 
-function getTopTags(projects: Project[]): string[] {
+function getTagsByFrequency(projects: Project[], experiences: Experience[]): string[] {
   const counts = new Map<string, number>()
 
-  projects.forEach((project) => {
-    project.tags.forEach((tag) => {
+  ;[...projects, ...experiences].forEach((item) => {
+    item.tags.forEach((tag) => {
       counts.set(tag, (counts.get(tag) ?? 0) + 1)
     })
   })
@@ -20,7 +22,6 @@ function getTopTags(projects: Project[]): string[] {
       ([tagA, countA], [tagB, countB]) =>
         countB - countA || tagA.localeCompare(tagB)
     )
-    .slice(0, 3)
     .map(([tag]) => tag)
 }
 
@@ -31,8 +32,7 @@ export default async function HomePage() {
   ])
 
   const newestProject = projects[0]
-  const topTags = getTopTags(projects)
-  const tagSummary = topTags.length > 0 ? topTags.join(' / ') : 'No tags yet'
+  const tagsByFrequency = getTagsByFrequency(projects, experiences)
 
   const projectItems: TimelineItem[] = projects.map((p) => ({
     kind: 'project',
@@ -71,15 +71,13 @@ export default async function HomePage() {
       <section className="mx-auto grid w-full max-w-6xl gap-10 px-6 pb-14 pt-14 md:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)] md:items-end md:pb-16 md:pt-20">
         <div className="max-w-3xl">
           <p className="mb-4 font-mono text-xs uppercase tracking-[0.15em] text-[--accent]">
-            Portfolio / Applied Systems
+            Portfolio | Data/AI/ML
           </p>
           <h1 className="font-display text-6xl uppercase leading-[0.9] tracking-[0.14em] text-[--foreground] sm:text-7xl lg:text-8xl">
-            HLJ
+            Hoyeon Luke Jang
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-7 text-[--midground] sm:text-lg">
-            A compact portfolio of production-minded engineering work across
-            distributed systems, machine learning, realtime interfaces, and
-            generative tools.
+            Own what you build
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
@@ -126,7 +124,7 @@ export default async function HomePage() {
           </div>
         </div>
 
-        <div className="border border-[--border] bg-[--surface] p-5 [background-image:radial-gradient(circle,color-mix(in_srgb,var(--midground)_8%,transparent)_1px,transparent_1px)] [background-size:28px_28px]">
+        <div className="border border-[--border] bg-[--background]/90 backdrop-blur-sm p-5">
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-[--muted]">
             Latest Project
           </p>
@@ -135,14 +133,14 @@ export default async function HomePage() {
               <p className="font-display text-3xl uppercase leading-none tracking-[0.12em] text-[--foreground]">
                 {newestProject.title}
               </p>
-              <p className="mt-4 text-sm leading-6 text-[--midground]">
+              <p className="mt-4 text-base leading-6 text-[--midground]">
                 {newestProject.description}
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {newestProject.tags.slice(0, 3).map((tag) => (
                   <span
                     key={tag}
-                    className="border border-[--forest-border] bg-[--forest-surface] px-2 py-1 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-[--accent]"
+                    className="border border-[--forest-border] bg-[--forest-surface] px-2 py-1 font-mono text-sm uppercase tracking-[0.12em] text-[--accent]"
                   >
                     {tag}
                   </span>
@@ -163,31 +161,29 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-[--border-subtle] bg-[--surface]/60">
+      <section className="border-y border-[--border-subtle] bg-[--background]/85 backdrop-blur-sm">
         <div className="mx-auto grid w-full max-w-6xl gap-5 px-6 py-6 sm:grid-cols-3">
-          <div className="border border-[--border-subtle] bg-[--background]/70 p-4">
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[--muted]">
+          <div className="border border-[--border-subtle] bg-[--background]/90 p-4">
+            <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-[--muted]">
               Total Work
             </p>
             <p className="mt-2 font-display text-2xl uppercase tracking-[0.12em] text-[--foreground]">
               {projects.length}
             </p>
           </div>
-          <div className="border border-[--border-subtle] bg-[--background]/70 p-4">
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[--muted]">
+          <div className="border border-[--border-subtle] bg-[--background]/90 p-4">
+            <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-[--muted]">
               Latest
             </p>
             <p className="mt-2 font-display text-2xl uppercase tracking-[0.12em] text-[--foreground]">
               {newestProject ? formatYearMonth(newestProject.endDate ?? newestProject.startDate) : 'Pending'}
             </p>
           </div>
-          <div className="border border-[--border-subtle] bg-[--background]/70 p-4">
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[--muted]">
+          <div className="border border-[--border-subtle] bg-[--background]/90 p-4">
+            <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-[--muted]">
               Tags
             </p>
-            <p className="mt-2 text-sm leading-6 text-[--midground]">
-              {tagSummary}
-            </p>
+            <RotatingTags tags={tagsByFrequency} />
           </div>
         </div>
       </section>
@@ -202,7 +198,7 @@ export default async function HomePage() {
               Timeline
             </h2>
           </div>
-          <p className="max-w-xl text-sm leading-6 text-[--midground]">
+          <p className="max-w-xl text-base leading-6 text-[--midground]">
             Experience and projects arranged together by date for a single view
             of applied systems work.
           </p>
