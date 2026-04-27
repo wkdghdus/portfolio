@@ -23,7 +23,8 @@ This version has breaking changes. Read the relevant guide in `node_modules/next
 | `types/` | TypeScript types | `types/AGENTS.md` |
 | `projects/` | Authored content (one folder per project) | `projects/AGENTS.md` |
 | `docs/design-reference/` | Nous design system reference | `docs/design-reference/AGENTS.md` |
-| `public/projects` | Symlink → `../projects` — do not remove | |
+| `public/projects/`, `public/experience/` | Generated at build time by `scripts/copy-content-assets.mjs` (gitignored). Do not edit. | |
+| `scripts/` | Build-time helpers | |
 
 ## Ground rules
 

@@ -6,7 +6,7 @@ Authored content. One folder per project — add a folder, get a page.
 
 1. Create `projects/<slug>/` — folder name becomes the URL slug (kebab-case).
 2. Add `project-description.md` with frontmatter (schema below) and markdown body.
-3. Drop assets in `projects/<slug>/assets/`. Served at `/projects/<slug>/assets/*` via the `public/projects` symlink.
+3. Drop assets in `projects/<slug>/assets/`. `scripts/copy-content-assets.mjs` mirrors them to `public/projects/<slug>/assets/` on `predev`/`prebuild`, so they're served at `/projects/<slug>/assets/*`.
 
 ## Frontmatter schema
 
