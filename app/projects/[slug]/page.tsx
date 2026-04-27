@@ -18,7 +18,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16">
       <Link
         href="/projects"
-        className="mb-8 inline-block font-display text-[0.8rem] tracking-[0.12em] uppercase opacity-60 hover:opacity-100 transition-opacity duration-200"
+        className="mb-8 inline-block font-display text-sm tracking-[0.12em] uppercase text-[--muted] transition-colors duration-200 hover:text-[--foreground]"
       >
         &larr; Back to projects
       </Link>

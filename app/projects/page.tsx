@@ -22,14 +22,14 @@ export default async function ProjectsPage() {
           </p>
         </div>
 
-        <div className="border border-[--border] bg-[--surface] p-5 [background-image:radial-gradient(circle,color-mix(in_srgb,var(--midground)_8%,transparent)_1px,transparent_1px)] [background-size:28px_28px]">
-          <p className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[--muted]">
+        <div className="border border-[--border] bg-[--background]/90 backdrop-blur-sm p-5">
+          <p className="font-mono text-xs uppercase tracking-[0.15em] text-[--muted]">
             Published Work
           </p>
           <p className="mt-3 font-display text-3xl uppercase tracking-[0.12em] text-[--foreground]">
             {projects.length}
           </p>
-          <p className="mt-4 text-sm leading-6 text-[--midground]">
+          <p className="mt-4 text-base leading-6 text-[--midground]">
             {latestProject
               ? `Latest: ${formatYearMonth(latestProject.endDate ?? latestProject.startDate)}`
               : 'Project entries will appear here once they are published.'}
