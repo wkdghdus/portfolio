@@ -16,7 +16,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     : formatYearMonth(project.startDate)
 
   return (
-    <div className="group flex flex-col overflow-hidden border border-[--border] bg-[--surface] transition-all duration-200 hover:border-[--accent] hover:shadow-[0_0_16px_var(--accent-glow)]">
+    <div className="group flex flex-col overflow-hidden border border-[--border] bg-[--background]/90 backdrop-blur-sm transition-all duration-200 hover:border-[--accent] hover:shadow-[0_0_16px_var(--accent-glow)]">
       <Link href={`/projects/${project.slug}`} className="block">
         <div className="h-48 flex-shrink-0 overflow-hidden bg-[--forest-surface]">
           {imageSrc && (
@@ -31,30 +31,30 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           )}
         </div>
         <div className="flex flex-col p-4 gap-3">
+          <h2 className="font-display text-xl uppercase tracking-[0.12em] text-[--foreground]">
+            {project.title}
+          </h2>
+          <p className="font-mono text-sm font-medium uppercase tracking-[0.12em] text-[--muted]">
+            {project.organization}
+          </p>
+          <p className="text-base text-[--midground] leading-relaxed line-clamp-3">
+            {project.description}
+          </p>
+          <time className="text-sm text-[--muted] font-mono uppercase tracking-[0.08em]">
+            {dateRange}
+          </time>
           {project.tags.length > 0 && (
             <ul className="flex flex-wrap gap-1.5">
               {project.tags.map((tag) => (
                 <li
                   key={tag}
-                  className="bg-[--forest-surface] border border-[--forest-border] text-[--accent] text-xs font-mono uppercase tracking-[0.08em] px-2 py-0.5"
+                  className="bg-[--forest-surface] border border-[--forest-border] text-[--accent] text-sm font-mono uppercase tracking-[0.08em] px-2 py-0.5"
                 >
                   {tag}
                 </li>
               ))}
             </ul>
           )}
-          <h2 className="font-display text-lg uppercase tracking-[0.12em] text-[--foreground]">
-            {project.title}
-          </h2>
-          <p className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-[--muted]">
-            {project.organization}
-          </p>
-          <p className="text-sm text-[--midground] leading-relaxed line-clamp-3">
-            {project.description}
-          </p>
-          <time className="text-xs text-[--muted] font-mono uppercase tracking-[0.08em]">
-            {dateRange}
-          </time>
         </div>
       </Link>
       {project.githubUrl && (

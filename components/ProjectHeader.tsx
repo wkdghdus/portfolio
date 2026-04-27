@@ -31,10 +31,10 @@ export default function ProjectHeader({
       <h1 className="mt-2 font-display text-4xl uppercase tracking-[0.15em] text-[--foreground]">
         {title}
       </h1>
-      <p className="mt-3 text-sm text-[--muted]">
+      <p className="mt-3 text-base font-medium text-[--muted]">
         {dateRange}
       </p>
-      <p className="mt-4 text-lg text-[--midground]">
+      <p className="mt-4 text-xl text-[--midground]">
         {description}
       </p>
       {githubUrl && (
@@ -52,7 +52,7 @@ export default function ProjectHeader({
           {tags.map((tag) => (
             <li
               key={tag}
-              className="bg-[--forest-surface] border border-[--forest-border] text-[--accent] text-xs font-mono uppercase tracking-[0.08em] px-2 py-0.5"
+              className="bg-[--forest-surface] border border-[--forest-border] text-[--accent] text-sm font-mono uppercase tracking-[0.08em] px-2 py-0.5"
             >
               {tag}
             </li>
