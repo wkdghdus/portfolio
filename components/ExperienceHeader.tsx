@@ -21,10 +21,10 @@ export default function ExperienceHeader({
       <h1 className="mt-2 font-display text-4xl uppercase tracking-[0.15em] text-[--foreground]">
         {role}
       </h1>
-      <p className="mt-3 text-sm text-[--muted]">
+      <p className="mt-3 text-base font-medium text-[--muted]">
         {dateRange}
       </p>
-      <p className="mt-4 text-lg text-[--midground]">
+      <p className="mt-4 text-xl text-[--midground]">
         {description}
       </p>
       {tags.length > 0 && (
@@ -32,7 +32,7 @@ export default function ExperienceHeader({
           {tags.map((tag) => (
             <li
               key={tag}
-              className="border border-[--forest-border] bg-[--forest-surface] px-2 py-0.5 font-mono text-xs uppercase tracking-[0.12em] text-[--accent]"
+              className="border border-[--forest-border] bg-[--forest-surface] px-2 py-0.5 font-mono text-sm uppercase tracking-[0.12em] text-[--accent]"
             >
               {tag}
             </li>

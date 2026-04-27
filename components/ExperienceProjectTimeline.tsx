@@ -81,39 +81,39 @@ function TimelineCard({ item }: { item: TimelineItem }) {
   return (
     <Link
       href={item.href}
-      className="group block border border-[--border] bg-[--surface] p-5 transition-all duration-200 hover:border-[--accent] hover:shadow-[0_0_16px_var(--accent-glow)] [background-image:radial-gradient(circle,color-mix(in_srgb,var(--midground)_6%,transparent)_1px,transparent_1px)] [background-size:24px_24px]"
+      className="group block border border-[--border] bg-[--background]/90 backdrop-blur-sm p-5 transition-all duration-200 hover:border-[--accent] hover:shadow-[0_0_16px_var(--accent-glow)]"
     >
       <div className="flex items-start justify-between gap-3 mb-3">
-        <time className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-[--muted]">
+        <time className="font-mono text-sm font-medium uppercase tracking-[0.12em] text-[--muted]">
           {item.date}
         </time>
-        <span className="border border-[--border-subtle] px-2 py-0.5 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-[--muted]">
+        <span className="border border-[--border-subtle] px-2 py-0.5 font-mono text-sm font-medium uppercase tracking-[0.12em] text-[--muted]">
           {item.kind === 'project' ? 'Project' : 'Experience'}
         </span>
       </div>
 
+      <h3 className="font-display text-xl uppercase tracking-[0.12em] text-[--foreground]">
+        {item.title}
+      </h3>
+      <p className="mt-1 font-mono text-sm uppercase tracking-[0.12em] text-[--muted]">
+        {item.subtitle}
+      </p>
+      <p className="mt-3 text-base leading-relaxed text-[--midground] line-clamp-3">
+        {item.description}
+      </p>
+
       {item.tags.length > 0 && (
-        <ul className="mb-3 flex flex-wrap gap-1.5">
+        <ul className="mt-3 flex flex-wrap gap-1.5">
           {item.tags.map((tag) => (
             <li
               key={tag}
-              className="border border-[--forest-border] bg-[--forest-surface] px-2 py-0.5 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-[--accent]"
+              className="border border-[--forest-border] bg-[--forest-surface] px-2 py-0.5 font-mono text-sm uppercase tracking-[0.12em] text-[--accent]"
             >
               {tag}
             </li>
           ))}
         </ul>
       )}
-
-      <h3 className="font-display text-lg uppercase tracking-[0.12em] text-[--foreground]">
-        {item.title}
-      </h3>
-      <p className="mt-1 font-mono text-xs uppercase tracking-[0.12em] text-[--muted]">
-        {item.subtitle}
-      </p>
-      <p className="mt-3 text-sm leading-relaxed text-[--midground] line-clamp-3">
-        {item.description}
-      </p>
     </Link>
   )
 }
