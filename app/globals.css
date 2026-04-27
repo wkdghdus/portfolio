@@ -10,7 +10,7 @@
   --accent-glow:    rgba(255, 189, 56, 0.35);
   --border:         color-mix(in srgb, #ffe6cb 15%, transparent);
   --border-subtle:  color-mix(in srgb, #ffe6cb 8%, transparent);
-  --muted:          color-mix(in srgb, #ffe6cb 50%, transparent);
+  --muted:          color-mix(in srgb, #ffe6cb 65%, transparent);
   --forest-surface: #0e1f0e;
   --forest-border:  #1f3320;
 }
@@ -42,6 +42,11 @@ body {
     transparent 1px
   );
   background-size: 28px 28px;
+}
+
+@keyframes scroll-tags {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .prose {
