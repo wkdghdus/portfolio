@@ -20,14 +20,14 @@ export default async function ExperiencePage() {
           </p>
         </div>
 
-        <div className="border border-[--border] bg-[--surface] p-5 [background-image:radial-gradient(circle,color-mix(in_srgb,var(--midground)_8%,transparent)_1px,transparent_1px)] [background-size:28px_28px]">
-          <p className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[--muted]">
+        <div className="border border-[--border] bg-[--background]/90 backdrop-blur-sm p-5">
+          <p className="font-mono text-xs uppercase tracking-[0.15em] text-[--muted]">
             Experience Entries
           </p>
           <p className="mt-3 font-display text-3xl uppercase tracking-[0.12em] text-[--foreground]">
             {experiences.length}
           </p>
-          <p className="mt-4 text-sm leading-6 text-[--midground]">
+          <p className="mt-4 text-base leading-6 text-[--midground]">
             {experiences[0]
               ? `Latest: ${formatYearMonth(experiences[0].endDate ?? experiences[0].startDate)}`
               : 'Experience entries will appear here once they are published.'}
@@ -52,39 +52,39 @@ export default async function ExperiencePage() {
               <li key={experience.slug}>
                 <Link
                   href={`/experience/${experience.slug}`}
-                  className="group block border border-[--border] bg-[--surface] p-5 transition-all duration-200 hover:border-[--accent] hover:shadow-[0_0_16px_var(--accent-glow)] [background-image:radial-gradient(circle,color-mix(in_srgb,var(--midground)_6%,transparent)_1px,transparent_1px)] [background-size:24px_24px]"
+                  className="group block border border-[--border] bg-[--background]/90 backdrop-blur-sm p-5 transition-all duration-200 hover:border-[--accent] hover:shadow-[0_0_16px_var(--accent-glow)]"
                 >
                   <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                    <span className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-[--muted]">
+                    <span className="font-mono text-sm font-medium uppercase tracking-[0.12em] text-[--muted]">
                       {dateRange}
                     </span>
-                    <span className="w-fit border border-[--border-subtle] px-2 py-0.5 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-[--muted]">
+                    <span className="w-fit border border-[--border-subtle] px-2 py-0.5 font-mono text-sm font-medium uppercase tracking-[0.12em] text-[--muted]">
                       Experience
                     </span>
                   </div>
 
+                  <h2 className="font-display text-2xl uppercase tracking-[0.12em] text-[--foreground]">
+                    {experience.role}
+                  </h2>
+                  <p className="mt-1 font-mono text-sm uppercase tracking-[0.12em] text-[--muted]">
+                    {experience.organization}
+                  </p>
+                  <p className="mt-3 max-w-3xl text-base leading-relaxed text-[--midground]">
+                    {experience.description}
+                  </p>
+
                   {experience.tags.length > 0 && (
-                    <ul className="mb-3 flex flex-wrap gap-1.5">
+                    <ul className="mt-3 flex flex-wrap gap-1.5">
                       {experience.tags.map((tag) => (
                         <li
                           key={tag}
-                          className="border border-[--forest-border] bg-[--forest-surface] px-2 py-0.5 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-[--accent]"
+                          className="border border-[--forest-border] bg-[--forest-surface] px-2 py-0.5 font-mono text-sm uppercase tracking-[0.12em] text-[--accent]"
                         >
                           {tag}
                         </li>
                       ))}
                     </ul>
                   )}
-
-                  <h2 className="font-display text-2xl uppercase tracking-[0.12em] text-[--foreground]">
-                    {experience.role}
-                  </h2>
-                  <p className="mt-1 font-mono text-xs uppercase tracking-[0.12em] text-[--muted]">
-                    {experience.organization}
-                  </p>
-                  <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[--midground]">
-                    {experience.description}
-                  </p>
                 </Link>
               </li>
             )
