@@ -27,3 +27,4 @@
 - **Imports**: `@/*` alias for all absolute imports.
 - **Filenames**: PascalCase for components, kebab-case for everything else.
 - **Design**: Before any UI or styling change, read `docs/design-reference/NORTH_STAR.md`.
+- **AI-native development**: After applying any changes, always update the local CLAUDE.md and AGENTS.md
