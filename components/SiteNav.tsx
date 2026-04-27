@@ -61,10 +61,10 @@ export default function SiteNav() {
                   <Link
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
-                    className={`font-display text-[0.75rem] uppercase tracking-[0.12em] text-[--midground] transition-opacity duration-200 sm:text-[0.8rem] ${
+                    className={`font-display text-sm uppercase tracking-[0.12em] transition-colors duration-200 ${
                       active
-                        ? ''
-                        : 'opacity-60 hover:opacity-100'
+                        ? 'text-[--midground]'
+                        : 'text-[--muted] hover:text-[--foreground]'
                     }`}
                   >
                     {item.label}
