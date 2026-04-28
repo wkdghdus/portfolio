@@ -7,6 +7,13 @@ const PDF_EXTS = new Set(['.pdf'])
 
 export type GalleryKind = 'projects' | 'experience'
 
+export function rewriteRelativeAssetSrc(html: string, basePath: string): string {
+  return html.replace(
+    /(<img\b[^>]*?\bsrc=)(["'])(assets\/[^"']+)\2/gi,
+    (_, prefix, quote, relPath) => `${prefix}${quote}${basePath}/${relPath}${quote}`
+  )
+}
+
 export function listGalleryAssets(kind: GalleryKind, slug: string): GalleryAsset[] {
   const assetsDir = path.join(process.cwd(), kind, slug, 'assets')
   if (!fs.existsSync(assetsDir)) return []

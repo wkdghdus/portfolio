@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
 import type { Experience, ExperienceFrontmatter } from '@/types/experience'
+import { rewriteRelativeAssetSrc } from '@/lib/gallery'
 export { formatYearMonth } from '@/lib/date'
 
 const experienceDir = path.join(process.cwd(), 'experience')
@@ -24,7 +25,7 @@ export async function getExperienceBySlug(slug: string): Promise<Experience> {
   return {
     slug,
     ...frontmatter,
-    content: processed.toString(),
+    content: rewriteRelativeAssetSrc(processed.toString(), `/experience/${slug}`),
   }
 }
 

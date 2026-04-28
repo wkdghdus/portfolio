@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
 import type { Project, ProjectFrontmatter } from '@/types/project'
+import { rewriteRelativeAssetSrc } from '@/lib/gallery'
 
 const projectsDir = path.join(process.cwd(), 'projects')
 
@@ -23,7 +24,7 @@ export async function getProjectBySlug(slug: string): Promise<Project> {
   return {
     slug,
     ...frontmatter,
-    content: processed.toString(),
+    content: rewriteRelativeAssetSrc(processed.toString(), `/projects/${slug}`),
   }
 }
 
