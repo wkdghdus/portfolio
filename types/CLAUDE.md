@@ -5,3 +5,7 @@ TypeScript type definitions. Read `project.ts` before touching any other file in
 ## Frozen types
 
 `ProjectFrontmatter` and `Project` in `project.ts` define the data shape every module produces or consumes. Do not change them. Use `ProjectFrontmatter` casts after `gray-matter` parses raw frontmatter.
+
+## Other modules
+
+- `gallery.ts` — `GalleryAsset` discriminated union (`{ kind: 'image' | 'pdf'; src; name }`) consumed by `lib/gallery.ts` and `components/Gallery.tsx`.

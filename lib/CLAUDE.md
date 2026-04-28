@@ -11,3 +11,7 @@ Data-loading utilities for project content.
 - `getAllProjects(): Project[]`
 
 Add new helpers if needed. Never change these signatures or return types.
+
+## Helpers (non-frozen)
+
+- `gallery.ts` — `listGalleryAssets(kind, slug)` lists images and PDFs in `<kind>/<slug>/assets/` for the detail-page gallery toggle. Returns `[]` when the directory is missing. Used by both project and experience routes.
