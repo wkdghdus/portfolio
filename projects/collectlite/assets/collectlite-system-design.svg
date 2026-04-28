@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 950" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-dashed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="950" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="550" y="35" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">CollectLite — System Design</text>
+  <text x="550" y="55" text-anchor="middle" font-size="12" fill="#64748b">Static topology · verified against commit 47cda7f</text>
+
+  <!-- ===================== BROWSER ===================== -->
+  <rect x="475" y="85" width="150" height="50" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="550" y="108" text-anchor="middle" font-size="14" font-weight="600" fill="#0f172a">Browser</text>
+  <text x="550" y="125" text-anchor="middle" font-size="11" fill="#64748b">end user</text>
+
+  <!-- arrow Browser -> Frontend -->
+  <line x1="550" y1="138" x2="550" y2="178" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="558" y="161" font-size="11" fill="#475569">HTTP · port 3000</text>
+
+  <!-- ===================== FRONTEND ===================== -->
+  <rect x="200" y="180" width="700" height="80" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="550" y="208" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Next.js Frontend</text>
+  <text x="550" y="226" text-anchor="middle" font-size="11" fill="#1e40af">port 3000</text>
+  <text x="550" y="248" text-anchor="middle" font-size="11" fill="#1e40af">App Router pages · TanStack Query · api.ts fetch wrapper</text>
+
+  <!-- arrow Frontend -> Backend -->
+  <line x1="550" y1="260" x2="550" y2="308" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="558" y="288" font-size="11" fill="#475569">HTTP/REST JSON · port 8000</text>
+
+  <!-- ===================== BACKEND ===================== -->
+  <rect x="100" y="310" width="900" height="240" rx="10" fill="#ede9fe" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="550" y="338" text-anchor="middle" font-size="15" font-weight="700" fill="#5b21b6">FastAPI Backend</text>
+  <text x="550" y="356" text-anchor="middle" font-size="11" fill="#6d28d9">port 8000 · single container · uvicorn</text>
+
+  <!-- Routers nested -->
+  <rect x="125" y="370" width="850" height="65" rx="6" fill="#ffffff" stroke="#a78bfa" stroke-width="1"/>
+  <text x="550" y="390" text-anchor="middle" font-size="12" font-weight="600" fill="#5b21b6">Routers (10)</text>
+  <text x="550" y="411" text-anchor="middle" font-size="11" fill="#6d28d9">projects · datasets · tasks · annotations · suggestions</text>
+  <text x="550" y="427" text-anchor="middle" font-size="11" fill="#6d28d9">consensus · reviews · metrics · exports · users</text>
+
+  <!-- in-process arrow indicator (Routers -> BackgroundTasks) -->
+  <line x1="550" y1="436" x2="550" y2="453" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrow-purple)"/>
+  <text x="558" y="450" font-size="9" fill="#7c3aed" font-style="italic">add_task() · in-process</text>
+
+  <!-- BackgroundTasks bubble (nested, dashed) -->
+  <rect x="125" y="455" width="850" height="80" rx="6" fill="#ddd6fe" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="550" y="478" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">In-process BackgroundTasks</text>
+  <text x="550" y="498" text-anchor="middle" font-size="11" fill="#6d28d9">generate_tasks · compute_consensus · create_export</text>
+  <text x="550" y="518" text-anchor="middle" font-size="10" fill="#7c3aed" font-style="italic">no broker, no queue — same Python process as the API</text>
+
+  <!-- ===================== ARROWS DOWN TO STORAGE / EXTERNAL ===================== -->
+  <!-- to PostgreSQL -->
+  <line x1="250" y1="550" x2="250" y2="615" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="195" y="575" font-size="11" fill="#475569" font-weight="500">SQL</text>
+  <text x="170" y="592" font-size="10" fill="#64748b">SQLAlchemy / psycopg3</text>
+
+  <!-- to Cohere -->
+  <line x1="550" y1="550" x2="550" y2="615" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+  <text x="558" y="575" font-size="11" fill="#dc2626" font-weight="600">HTTPS</text>
+  <text x="558" y="592" font-size="10" fill="#991b1b">cohere SDK · sync</text>
+
+  <!-- to Filesystem -->
+  <line x1="850" y1="550" x2="850" y2="615" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="858" y="575" font-size="11" fill="#475569" font-weight="500">file I/O</text>
+  <text x="858" y="592" font-size="10" fill="#64748b">read / write</text>
+
+  <!-- ===================== POSTGRESQL ===================== -->
+  <rect x="120" y="620" width="260" height="105" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="250" y="648" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">PostgreSQL 16</text>
+  <text x="250" y="668" text-anchor="middle" font-size="11" fill="#166534">port 5432 · postgres_data volume</text>
+  <text x="250" y="687" text-anchor="middle" font-size="11" fill="#166534">14 tables across 5 domains</text>
+  <text x="250" y="708" text-anchor="middle" font-size="10" fill="#15803d" font-style="italic">source of truth for every persistent record</text>
+
+  <!-- ===================== COHERE ===================== -->
+  <rect x="420" y="620" width="260" height="105" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="550" y="648" text-anchor="middle" font-size="15" font-weight="700" fill="#7f1d1d">Cohere Rerank API</text>
+  <text x="550" y="668" text-anchor="middle" font-size="11" fill="#991b1b">external service · HTTPS</text>
+  <text x="550" y="687" text-anchor="middle" font-size="11" fill="#991b1b">model suggestion generator</text>
+  <text x="550" y="710" text-anchor="middle" font-size="10" fill="#dc2626" font-weight="600">⚠ synchronous · blocks request thread</text>
+
+  <!-- ===================== FILESYSTEM ===================== -->
+  <rect x="720" y="620" width="260" height="105" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="850" y="648" text-anchor="middle" font-size="15" font-weight="700" fill="#713f12">Filesystem</text>
+  <text x="850" y="668" text-anchor="middle" font-size="11" fill="#854d0e">./exports/{export_id}.{jsonl,csv}</text>
+  <text x="850" y="687" text-anchor="middle" font-size="11" fill="#854d0e">written by create_export job</text>
+  <text x="850" y="710" text-anchor="middle" font-size="10" fill="#ca8a04" font-weight="600">⚠ ephemeral · no volume mount</text>
+
+  <!-- ===================== ALEMBIC ===================== -->
+  <rect x="120" y="780" width="260" height="65" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="250" y="803" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">Alembic migrations</text>
+  <text x="250" y="822" text-anchor="middle" font-size="10" fill="#15803d">3 versions on disk · head 0003</text>
+  <text x="250" y="838" text-anchor="middle" font-size="10" fill="#15803d" font-style="italic">one-shot · alembic upgrade head before uvicorn</text>
+
+  <!-- arrow Alembic -> PostgreSQL (upward) -->
+  <line x1="250" y1="780" x2="250" y2="727" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrow-dashed)"/>
+  <text x="258" y="757" font-size="10" fill="#64748b" font-style="italic">DDL on boot</text>
+
+  <!-- ===================== LEGEND ===================== -->
+  <g transform="translate(720, 780)">
+    <rect x="0" y="0" width="260" height="148" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="130" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a">Legend</text>
+
+    <!-- solid arrow -->
+    <line x1="18" y1="42" x2="50" y2="42" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="60" y="46" font-size="10" fill="#334155">network call (HTTP / SQL)</text>
+
+    <!-- red solid -->
+    <line x1="18" y1="62" x2="50" y2="62" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+    <text x="60" y="66" font-size="10" fill="#334155">external (Cohere) — synchronous</text>
+
+    <!-- dashed arrow -->
+    <line x1="18" y1="82" x2="50" y2="82" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrow-dashed)"/>
+    <text x="60" y="86" font-size="10" fill="#334155">in-process / one-shot</text>
+
+    <!-- dashed border swatch -->
+    <rect x="18" y="98" width="32" height="14" rx="3" fill="#ddd6fe" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="60" y="109" font-size="10" fill="#334155">nested in parent process</text>
+
+    <text x="18" y="130" font-size="9" fill="#64748b" font-style="italic">no message broker · no separate</text>
+    <text x="18" y="141" font-size="9" fill="#64748b" font-style="italic">worker container in this topology</text>
+  </g>
+</svg>
