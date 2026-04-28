@@ -9,6 +9,7 @@ Next.js App Router. Entry point for all routes and global styles.
 | `layout.tsx` | Root layout — fonts, metadata, body wrapper |
 | `page.tsx` | Home page — project grid |
 | `globals.css` | Tailwind v4 entry + all CSS custom properties |
+| `icon.svg` | Site favicon — gold "LJ" monogram on `--background`. Next.js auto-detects this file and emits the `<link rel="icon">` tag. |
 | `projects/[slug]/page.tsx` | Per-project detail page (statically generated) |
 
 ## Rules

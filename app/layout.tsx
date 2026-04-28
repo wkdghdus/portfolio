@@ -20,8 +20,8 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "A file-system driven portfolio built with Next.js.",
+  title: "Luke Jang",
+  description: "Portfolio of Hoyeon Luke Jang.",
 };
 
 export default function RootLayout({
