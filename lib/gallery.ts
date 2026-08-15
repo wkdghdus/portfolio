@@ -14,6 +14,12 @@ export function rewriteRelativeAssetSrc(html: string, basePath: string): string 
   )
 }
 
+export function wrapTablesForScroll(html: string): string {
+  return html
+    .replace(/<table>/g, '<div class="overflow-x-auto"><table>')
+    .replace(/<\/table>/g, '</table></div>')
+}
+
 export function listGalleryAssets(kind: GalleryKind, slug: string): GalleryAsset[] {
   const assetsDir = path.join(process.cwd(), kind, slug, 'assets')
   if (!fs.existsSync(assetsDir)) return []

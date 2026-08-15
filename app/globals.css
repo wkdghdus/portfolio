@@ -49,6 +49,11 @@ body {
   to   { transform: translateX(-50%); }
 }
 
+.prose table {
+  width: max-content;
+  max-width: none;
+}
+
 .prose {
   --tw-prose-body:       var(--midground);
   --tw-prose-headings:   var(--foreground);

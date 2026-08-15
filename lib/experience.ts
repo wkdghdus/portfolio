@@ -2,9 +2,10 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
+import remarkGfm from 'remark-gfm'
 import html from 'remark-html'
 import type { Experience, ExperienceFrontmatter } from '@/types/experience'
-import { rewriteRelativeAssetSrc } from '@/lib/gallery'
+import { rewriteRelativeAssetSrc, wrapTablesForScroll } from '@/lib/gallery'
 export { formatYearMonth } from '@/lib/date'
 
 const experienceDir = path.join(process.cwd(), 'experience')
@@ -21,11 +22,11 @@ export async function getExperienceBySlug(slug: string): Promise<Experience> {
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
   const frontmatter = normalizeFrontmatter(data)
-  const processed = await remark().use(html).process(content)
+  const processed = await remark().use(remarkGfm).use(html).process(content)
   return {
     slug,
     ...frontmatter,
-    content: rewriteRelativeAssetSrc(processed.toString(), `/experience/${slug}`),
+    content: wrapTablesForScroll(rewriteRelativeAssetSrc(processed.toString(), `/experience/${slug}`)),
   }
 }
 
